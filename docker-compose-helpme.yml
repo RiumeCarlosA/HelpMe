@@ -1,29 +1,37 @@
+
 version: '3'
- 
+
+networks:
+  helpme_network:
+    driver: bridge    
+
 services:
-  db:
-    image: mysql:5.7
-    container_name: mysql_db
-    environment:
-      MYSQL_ROOT_PASSWORD: 123@mudar
-      MYSQL_DATABASE: helpme_db
-      MYSQL_USER: riume
-      MYSQL_PASSWORD: 123@mudar
-    ports:
-      - "6033:3306"
-    volumes:
-      - dbdata:/var/lib/mysql
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    links:
-      - mysql_db
-    environment:
-      PMA_HOST: mysql_db
-      PMA_PORT: 3306
-      PMA_ARBITRARY: 1
+
+#docker-compose -f docker-compose-helpme.yml up helpme_postgres_local
+  helpme_postgres_local:
     restart: always
+    container_name: postgres-helpme-local
+    image: postgres:12.2-alpine
     ports:
-      - 8081:80
-volumes:
-  dbdata:
+      - 5234:5234
+    networks:
+      - helpme_network
+    environment:
+      - POSTGRES_DB=helpme
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123@mudar
+
+  #docker-compose -f docker-compose-helpme.yml up helpme_pgadmin
+  helpme_pgadmin:
+    restart: always
+    image: dpage/pgadmin4
+    container_name: helpme-pgadmin
+    ports:
+      - 15234:80
+    networks:
+      - helpme_network
+    environment:
+      - PGADMIN_DEFAULT_PASSWORD=p0stgr3s
+      - PGADMIN_DEFAULT_EMAIL=postgres@postgres.com
+    depends_on:
+      - helpme_postgres_local

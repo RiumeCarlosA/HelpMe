@@ -19,10 +19,12 @@ public class TestConfig {
 	private String value;
 	
 	@Bean
-	public boolean instanciaDB() {
-		if(value.equals("create")) {
-			this.dbService.instanciaDB();			
-		}
-		return false;
+	public void instanciaDB() {
+		// QUANDO RODAR A DEV DESCOMENTAR 
+//		if(value.equals("create")) {
+//			this.dbService.instanciaDB();			
+//		}
+//		return false;
+		this.dbService.instanciaDB();
 	}
 }

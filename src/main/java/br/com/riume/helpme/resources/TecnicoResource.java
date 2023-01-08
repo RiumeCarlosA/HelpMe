@@ -1,4 +1,4 @@
-package br.com.riume.helpme.Resources;
+package br.com.riume.helpme.resources;
 
 import java.net.URI;
 import java.util.List;
@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.riume.helpme.dto.TecnicoDTO;
 import br.com.riume.helpme.model.Tecnico;
 import br.com.riume.helpme.services.TecnicoService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/tecnicos")
@@ -39,7 +40,7 @@ public class TecnicoResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<TecnicoDTO> create(@RequestBody TecnicoDTO objDTO){
+	public ResponseEntity<TecnicoDTO> create(@Valid @RequestBody TecnicoDTO objDTO){
 		Tecnico newObj = service.create(objDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();

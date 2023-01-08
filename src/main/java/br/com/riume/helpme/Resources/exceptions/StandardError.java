@@ -1,4 +1,4 @@
-package br.com.riume.helpme.services.exceptions;
+package br.com.riume.helpme.Resources.exceptions;
 
 import java.io.Serializable;
 

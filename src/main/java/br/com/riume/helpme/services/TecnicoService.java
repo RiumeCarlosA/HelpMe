@@ -13,6 +13,7 @@ import br.com.riume.helpme.repository.PessoaRepository;
 import br.com.riume.helpme.repository.TecnicoRepository;
 import br.com.riume.helpme.services.exceptions.DataIntegrityViolationException;
 import br.com.riume.helpme.services.exceptions.ObjectNotFoundException;
+import jakarta.validation.Valid;
 
 @Service
 public class TecnicoService {
@@ -38,7 +39,15 @@ public class TecnicoService {
 		Tecnico newObj = new Tecnico(objDTO);
 		return repository.save(newObj);
 	}
-
+	
+	public Tecnico update(Integer id, @Valid TecnicoDTO objDTO) {
+		objDTO.setId(id);
+		Tecnico oldObj = findById(id);
+		validaPorCpfEEmail(objDTO);
+		oldObj = new Tecnico(objDTO);
+		return repository.save(oldObj);
+	}
+	
 	private void validaPorCpfEEmail(TecnicoDTO objDTO) {
 		Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
 		if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
@@ -50,4 +59,6 @@ public class TecnicoService {
 			throw new DataIntegrityViolationException("E-mail Inválido");
 		}
 	}
+
+	
 }

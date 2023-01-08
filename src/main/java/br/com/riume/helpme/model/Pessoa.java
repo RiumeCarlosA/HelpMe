@@ -7,10 +7,11 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.riume.helpme.enums.Perfil;
-import jakarta.annotation.Generated;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -29,6 +30,7 @@ public abstract class Pessoa implements Serializable{
 	protected Integer id;
 	protected String nome;
 	
+	@CPF
 	@Column(unique = true)
 	protected String cpf;
 	

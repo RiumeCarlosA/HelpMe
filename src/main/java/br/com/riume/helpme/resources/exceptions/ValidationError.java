@@ -1,4 +1,4 @@
-package br.com.riume.helpme.Resources.exceptions;
+package br.com.riume.helpme.resources.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

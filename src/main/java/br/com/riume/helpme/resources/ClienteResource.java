@@ -34,14 +34,14 @@ public class ClienteResource {
 		return ResponseEntity.ok().body(new ClienteDTO(obj));
 	}
 	
-	@GetMapping
+	@GetMapping("")
 	public ResponseEntity<List<ClienteDTO>> findAll(){
 		List<Cliente> list = service.findAll();
 		List<ClienteDTO> listDTO = list.stream().map(obj -> new ClienteDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDTO);
 	}
 	
-	@PostMapping
+	@PostMapping("")
 	public ResponseEntity<ClienteDTO> create(@Valid @RequestBody ClienteDTO objDTO){
 		Cliente newObj = service.create(objDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
@@ -59,4 +59,5 @@ public class ClienteResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	
 }

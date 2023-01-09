@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.riume.helpme.model.Chamado;
+import jakarta.validation.constraints.NotNull;
 
 public class ChamadoDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -14,18 +15,23 @@ public class ChamadoDTO implements Serializable{
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataAbertura = LocalDate.now();
-	
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFechamento;
-	
+	@NotNull(message = "O campo PRIORIDADE é obrigatório")
 	private Integer prioridade;
+	@NotNull(message = "O campo STATUS é obrigatório")
 	private Integer status;
+	@NotNull(message = "O campo TÍTULO é obrigatório")
 	private String titulo;
+	@NotNull(message = "O campo OBSERVAÇÃO é obrigatório")
 	private String observacoes;
+	@NotNull(message = "O campo TECNICO é obrigatório")
 	private Integer tecnico;
+	@NotNull(message = "O campo CLIENTE é obrigatório")
 	private Integer cliente;
 	private String nomeTecnico;
 	private String nomeCliente;
+	
 	public ChamadoDTO() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -1,5 +1,6 @@
 package br.com.riume.helpme.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.riume.helpme.dto.ChamadoDTO;
+import br.com.riume.helpme.dto.ClienteDTO;
 import br.com.riume.helpme.enums.Prioridade;
 import br.com.riume.helpme.enums.Status;
 import br.com.riume.helpme.model.Chamado;
@@ -36,7 +38,15 @@ public class ChamadoService {
 	}
 
 	public Chamado create(@Valid ChamadoDTO objDTO) {
+		objDTO.setId(null);
 		return repository.save(newChamado(objDTO));
+	}
+	
+	public Chamado update(Integer id, @Valid ChamadoDTO objDTO) {
+		objDTO.setId(id);
+		Chamado oldObj = findById(id);
+		oldObj = newChamado(objDTO);
+		return repository.save(oldObj);
 	}
 	
 	public Chamado newChamado(ChamadoDTO obj) {
@@ -49,6 +59,10 @@ public class ChamadoService {
 			chamado.setId(obj.getId());
 		}
 		
+		if(obj.getStatus().equals(2)) {
+			chamado.setDataFechamento(LocalDate.now());
+		}
+		
 		chamado.setTecnico(tecnico);
 		chamado.setCliente(cliente);
 		chamado.setPrioridade(Prioridade.toEnum(obj.getPrioridade()));
@@ -58,5 +72,7 @@ public class ChamadoService {
 		
 		return chamado;
 	}
+
+	
 	
 }

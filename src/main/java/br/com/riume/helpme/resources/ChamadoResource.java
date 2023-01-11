@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.riume.helpme.dto.ChamadoDTO;
-import br.com.riume.helpme.dto.ClienteDTO;
 import br.com.riume.helpme.model.Chamado;
-import br.com.riume.helpme.model.Cliente;
 import br.com.riume.helpme.services.ChamadoService;
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/chamados")

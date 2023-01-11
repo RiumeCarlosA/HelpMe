@@ -6,11 +6,12 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.riume.helpme.enums.Perfil;
 import br.com.riume.helpme.model.Tecnico;
-import jakarta.validation.constraints.NotNull;
 
 public class TecnicoDTO implements Serializable{
 	private static final long serialVersionUID = 1L;

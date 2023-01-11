@@ -4,11 +4,12 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.riume.helpme.dto.ChamadoDTO;
-import br.com.riume.helpme.dto.ClienteDTO;
 import br.com.riume.helpme.enums.Prioridade;
 import br.com.riume.helpme.enums.Status;
 import br.com.riume.helpme.model.Chamado;
@@ -16,7 +17,6 @@ import br.com.riume.helpme.model.Cliente;
 import br.com.riume.helpme.model.Tecnico;
 import br.com.riume.helpme.repository.ChamadoRepository;
 import br.com.riume.helpme.services.exceptions.ObjectNotFoundException;
-import jakarta.validation.Valid;
 
 @Service
 public class ChamadoService {

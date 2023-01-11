@@ -3,17 +3,19 @@ package br.com.riume.helpme.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.riume.helpme.dto.ClienteDTO;
-import br.com.riume.helpme.model.Pessoa;
 import br.com.riume.helpme.model.Cliente;
-import br.com.riume.helpme.repository.PessoaRepository;
+import br.com.riume.helpme.model.Pessoa;
 import br.com.riume.helpme.repository.ClienteRepository;
+import br.com.riume.helpme.repository.PessoaRepository;
 import br.com.riume.helpme.services.exceptions.DataIntegrityViolationException;
 import br.com.riume.helpme.services.exceptions.ObjectNotFoundException;
-import jakarta.validation.Valid;
 
 @Service
 public class ClienteService {
@@ -23,6 +25,9 @@ public class ClienteService {
 	
 	@Autowired
 	private PessoaRepository pessoaRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	public Cliente findById(Integer id) {
 		Optional<Cliente> obj = repository.findById(id);
@@ -35,6 +40,7 @@ public class ClienteService {
 
 	public Cliente create(ClienteDTO objDTO) {
 		objDTO.setId(null);
+		objDTO.setSenha(encoder.encode(objDTO.getSenha()));
 		validaPorCpfEEmail(objDTO);
 		Cliente newObj = new Cliente(objDTO);
 		return repository.save(newObj);
@@ -42,6 +48,7 @@ public class ClienteService {
 	
 	public Cliente update(Integer id, @Valid ClienteDTO objDTO) {
 		objDTO.setId(id);
+
 		Cliente oldObj = findById(id);
 		validaPorCpfEEmail(objDTO);
 		oldObj = new Cliente(objDTO);

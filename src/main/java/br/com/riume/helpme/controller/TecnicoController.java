@@ -1,4 +1,4 @@
-package br.com.riume.helpme.resources;
+package br.com.riume.helpme.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +25,7 @@ import br.com.riume.helpme.services.TecnicoService;
 
 @RestController
 @RequestMapping(value = "/tecnicos")
-public class TecnicoResource {
+public class TecnicoController {
 	
 	@Autowired
 	private TecnicoService service;
@@ -42,6 +43,7 @@ public class TecnicoResource {
 		return ResponseEntity.ok().body(listDTO);
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@PostMapping("")
 	public ResponseEntity<TecnicoDTO> create(@Valid @RequestBody TecnicoDTO objDTO){
 		Tecnico newObj = service.create(objDTO);
@@ -49,12 +51,14 @@ public class TecnicoResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<TecnicoDTO> update(@PathVariable Integer id, @Valid @RequestBody TecnicoDTO objDTO){
 		Tecnico obj = service.update(id, objDTO);
 		return ResponseEntity.ok().body(new TecnicoDTO(obj));
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<TecnicoDTO> delete(@PathVariable Integer id){
 		service.delete(id);

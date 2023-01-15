@@ -1,4 +1,4 @@
-package br.com.riume.helpme.resources.exceptions;
+package br.com.riume.helpme.controller.exceptions;
 
 import javax.servlet.http.HttpServletRequest;
 

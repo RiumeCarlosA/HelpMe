@@ -5,6 +5,7 @@ Tecnologias utilizadas:
 
 Docker, docker compose;
 Java 11;
+Maven;
 Spring boot 2.3.12;
 Spring security < 6;
 JWT;

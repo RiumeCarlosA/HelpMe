@@ -6,6 +6,8 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +39,11 @@ public class ClienteService {
 	public List<Cliente> findAll() {
 		return repository.findAll();
 	}
-
+	
+	public Page<Cliente> findAllPage(Pageable pageable) {
+		return repository.findAll(pageable);
+	}
+	
 	public Cliente create(ClienteDTO objDTO) {
 		objDTO.setId(null);
 		objDTO.setSenha(encoder.encode(objDTO.getSenha()));

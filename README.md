@@ -16,7 +16,7 @@ Database H2 para testes;
 
 Motivação:
 
-Aplicação voltada para atendimentos de suporte, com intuito de estudar novas tecnologias e desenvover uma aplicação web do zero.
+Aplicação voltada para atendimentos de suporte, com intuito de estudar novas tecnologias e desenvover uma aplicação RESTful do zero.
 
 Preparação do ambiente para o projeto:
 
@@ -25,7 +25,7 @@ Com essas configurações o projeto estará funcionando tanto no ambiente de tes
 Para testar coloque o endereço "localhost:8080/login" no postman e passe os parâmetros como JSON:
 {
     "email": "riumecarlos@gmail.com",
-    "senha": "123"
+    "senha": "123@mudar"
 }
 
 

@@ -1,7 +1,7 @@
 # HelpMe
 Sistema para prestação de serviço, suporte.
 
-h1{Tecnologias utilizadas:} 
+Tecnologias utilizadas:
 
 Docker, docker compose;
 Java 11;

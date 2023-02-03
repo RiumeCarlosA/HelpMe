@@ -1,6 +1,18 @@
 # HelpMe
 Sistema para prestação de serviço, suporte.
 
+# O Projeto Backend está hospedado
+
+[HelpMe-Backend](https://helpme-backend-production.up.railway.app)
+
+# Você pode conferir a aplicação
+
+[HelpMe - Sistema para suporte](https://helpme-frontend.vercel.app)
+
+Usuário Administrador: riumecarlos@gmail.com
+
+Senha: 123@mudar
+
 # Tecnologias utilizadas:
 
 * Docker, docker compose;
@@ -39,7 +51,7 @@ Com essas configurações o projeto estará funcionando tanto no ambiente de tes
 
 Para testar coloque o endereço "localhost:8080/login" no postman e passe os parâmetros como JSON:
 
-
+  
 {
 
     "email": "riumecarlos@gmail.com",
@@ -47,15 +59,9 @@ Para testar coloque o endereço "localhost:8080/login" no postman e passe os par
     "senha": "123@mudar"
     
 }
+  
 
 
-# O Projeto Backend está hospedado em [HelpMe-Backend](https://helpme-backend-production.up.railway.app)
-
-# Você pode conferir a aplicação em [HelpMe - Sistema para suporte](https://helpme-frontend.vercel.app)
-
-## Usuário Administrador: riumecarlos@gmail.com
-
-## Senha: 123@mudar
 
 
 

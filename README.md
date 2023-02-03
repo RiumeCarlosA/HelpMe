@@ -51,15 +51,13 @@ Com essas configurações o projeto estará funcionando tanto no ambiente de tes
 
 Para testar coloque o endereço "localhost:8080/login" no postman e passe os parâmetros como JSON:
 
-  
-{
 
-    "email": "riumecarlos@gmail.com",
+    {
     
-    "senha": "123@mudar"
-    
-}
-  
+       "email": "riumecarlos@gmail.com",
+
+       "senha": "123@mudar"
+    }
 
 
 

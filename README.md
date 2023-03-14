@@ -36,7 +36,7 @@ Precisará do maven, docker e docker compose. Depois de clonar o repositório, i
 * docker-compose -f docker-compose-helpme.yml up helpme_postgres_local 
 * docker-compose -f docker-compose-helpme.yml up helpme_pgadmin
 
-Logo após certifique-se do ip que o container "helpme_postgres_local" é o mesmo que está no arquivo "application-dev.properties". 
+Logo após certifique-se do ip que o container "helpme_postgres_local" é o mesmo que está no arquivo "application-dev.properties".  
 
 Para configurar no PgAdmin:
 
